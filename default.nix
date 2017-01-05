@@ -1,9 +1,9 @@
 let
 
-  nixpkgs = import <nixpkgs/pkgs/top-level> {
+  pkgs = import <nixpkgs/pkgs/top-level> {
     system = builtins.currentSystem;
     config = {
-      haskellPackageOverrides = self: super: with nixpkgs.haskell.lib; {
+      haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
         xhb = appendPatch super.xhb ./xhb.patch;
 
         xhb-requests = self.callPackage ../xhb-requests/xhb-requests.nix {};
@@ -21,6 +21,4 @@ let
     };
   };
 
-in with nixpkgs;
-
-haskellPackages
+in pkgs
