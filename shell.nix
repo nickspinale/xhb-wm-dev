@@ -7,6 +7,7 @@ let
     xhb-monad
     xhb-keysyms
     xhb-mapping-state
+    xhb-event-queue
   ]);
 
 in stdenv.mkDerivation {

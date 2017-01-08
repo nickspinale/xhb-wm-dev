@@ -17,6 +17,7 @@ let
         xhb-keysyms-build-utils = self.callPackage ../xhb-keysyms/build-utils {};
 
         xhb-mapping-state = self.callPackage ../xhb-mapping-state {};
+        xhb-event-queue = self.callPackage ../xhb-event-queue {};
       };
     };
   };
