@@ -1,20 +1,23 @@
-import <nixpkgs> {
+(import <nixpkgs> {
   config = { pkgs }: {
-    haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
+    haskellPackageOverrides = self: super: with pkgs.haskell.lib; with self; {
       xhb = appendPatch super.xhb ./xhb.patch;
 
-      xhb-requests = self.callPackage ../xhb-requests/xhb-requests.nix {};
-      xhb-requests-src = self.callPackage ../xhb-requests/xhb-requests-src.nix {};
-      xhb-requests-build-utils = self.callPackage ../xhb-requests/build-utils {};
+      xhb-requests = callPackage ../xhb-requests/xhb-requests.nix {};
+      xhb-requests-src = callPackage ../xhb-requests/xhb-requests-src.nix {};
+      xhb-requests-build-utils = callPackage ../xhb-requests/build-utils {};
 
-      xhb-keysyms = self.callPackage ../xhb-keysyms/xhb-keysyms.nix {};
-      xhb-keysyms-src = self.callPackage ../xhb-keysyms/xhb-keysyms-src.nix {};
-      xhb-keysyms-build-utils = self.callPackage ../xhb-keysyms/build-utils {};
+      xhb-keysyms = callPackage ../xhb-keysyms/xhb-keysyms.nix {};
+      xhb-keysyms-src = callPackage ../xhb-keysyms/xhb-keysyms-src.nix {};
+      xhb-keysyms-build-utils = callPackage ../xhb-keysyms/build-utils {};
 
-      xhb-monad = self.callPackage ../xhb-monad {};
+      xhb-monad = callPackage ../xhb-monad {};
 
-      xhb-event-queue = self.callPackage ../xhb-event-queue {};
-      xhb-mapping-state = self.callPackage ../xhb-mapping-state {};
+      xhb-event-queue = callPackage ../xhb-event-queue {};
+      xhb-mapping-state = callPackage ../xhb-mapping-state {};
+
+      tinywm = callPackage ../tinywm {};
+      wm = callPackage ../wm {};
     };
   };
-}
+}).haskellPackages

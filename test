@@ -1,9 +1,11 @@
 #!/bin/sh
+set -e
+wm=$(nix-build /home/nick/wmdev/xhb-wm-dev -A wm)
 Xephyr :1 &
 pid=$!
 sleep 0.5
 export DISPLAY=":1"
-$(dirname $0)/tinywm/result/bin/tinywm &
+$wm/bin/wm &
 xterm &
 wait $pid
 pkill -P $$
