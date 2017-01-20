@@ -2,6 +2,7 @@
   config = { pkgs }: {
     haskellPackageOverrides = self: super: with pkgs.haskell.lib; with self; {
       xhb = appendPatch super.xhb ./xhb.patch;
+      xhb-atom-cache = doJailbreak super.xhb-atom-cache;
 
       xhb-requests = callPackage ../xhb-requests/xhb-requests.nix {};
       xhb-requests-src = callPackage ../xhb-requests/xhb-requests-src.nix {};
@@ -17,7 +18,8 @@
       xhb-mapping-state = callPackage ../xhb-mapping-state {};
 
       tinywm = callPackage ../tinywm {};
-      wm = callPackage ../wm {};
+      # wm = callPackage ../wm {};
+      wm = dontCheck (callPackage ../wm {});
     };
   };
 }).haskellPackages
