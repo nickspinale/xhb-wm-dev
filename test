@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e
-wm=$(nix-build /home/nick/wmdev/xhb-wm-dev -A wm)
+wm=$(nix-build /home/nick/wmdev/xhb-wm-dev -A wmonad)
 Xephyr :1 &
 pid=$!
 sleep 0.5
 export DISPLAY=":1"
-$wm/bin/wm &
+$wm/bin/wmonad &
 xterm &
 wait $pid
 pkill -P $$

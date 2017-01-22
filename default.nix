@@ -18,8 +18,8 @@
       xhb-mapping-state = callPackage ../xhb-mapping-state {};
 
       tinywm = callPackage ../tinywm {};
-      # wm = callPackage ../wm {};
-      wm = dontCheck (callPackage ../wm {});
+
+      wmonad = dontHaddock (dontCheck (callPackage ../wmonad {}));
     };
   };
 }).haskellPackages
