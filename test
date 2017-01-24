@@ -1,9 +1,10 @@
 #!/bin/sh
 set -e
-wm=$(nix-build /home/nick/wmdev/xhb-wm-dev -A wmonad)
+wm=$(nix-build $(dirname $0) -A wmonad)
 Xephyr :1 &
 pid=$!
-sleep 0.5
+echo "CR to continue"
+read
 export DISPLAY=":1"
 $wm/bin/wmonad &
 xterm &
