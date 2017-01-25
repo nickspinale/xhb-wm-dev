@@ -1,2 +1,3 @@
 # xhb-wm-dev
-Nix files common to all xhb-wm-dev-related projects
+
+Nix expressions common to all xhb window manager-related repositories.
