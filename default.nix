@@ -2,8 +2,6 @@
   config = { pkgs }: {
     haskellPackageOverrides = self: super: with pkgs.haskell.lib; with self; {
 
-      # mkDerivation = args: super.mkDerivation (args // { enableLibraryProfiling = true; });
-
       xhb = appendPatch super.xhb ./xhb.patch;
       xhb-atom-cache = doJailbreak super.xhb-atom-cache;
 
